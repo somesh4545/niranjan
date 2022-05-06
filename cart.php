@@ -40,19 +40,22 @@ session_start();
     if (isset($_SESSION['cust_id'])) {
 
     ?>
-      <table>
+      <?php
+      $cust_id = $_SESSION['cust_id'];
+      $sql = "SELECT *, cart.id AS cart_id, cart.quantity AS cart_quantity, products.quantity AS product_quantity FROM `cart` INNER JOIN products ON product_id=products.id WHERE cust_id=$cust_id";
+      $result = $conn->query($sql);
 
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Subtotal</th>
-        </tr>
-        <?php
-        $cust_id = $_SESSION['cust_id'];
-        $sql = "SELECT *, cart.id AS cart_id, cart.quantity AS cart_quantity, products.quantity AS product_quantity FROM `cart` INNER JOIN products ON product_id=products.id WHERE cust_id=$cust_id";
-        $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+      ?>
+        <table>
 
-        if ($result->num_rows > 0) {
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+          </tr>
+          <?php
+
           while ($row = $result->fetch_assoc()) {
             $product_id = $row['product_id'];
             $cart_id = $row['cart_id'];
@@ -92,14 +95,14 @@ session_start();
             </tr>
           ";
           }
-        }
-        $cust_id = base64_encode($cust_id);
-        ?>
-      </table>
 
-      <div class="total-price">
-        <table>
-          <!-- <tr>
+          $cust_id = base64_encode($cust_id);
+          ?>
+        </table>
+
+        <div class="total-price">
+          <table>
+            <!-- <tr>
             <td>Subtotal</td>
             <td>₹<?= $subtotal ?></td>
           </tr>
@@ -107,13 +110,19 @@ session_start();
             <td>Tax</td>
             <td>₹<?= $tax ?></td>
           </tr> -->
-          <tr>
-            <td>Total</td>
-            <td>₹<?php echo $subtotal ?></td>
-          </tr>
-        </table>
-        <a href="../webproj/checkout/checkout.php" class="checkout btn">Proceed To Checkout</a>
-      </div>
+            <tr>
+              <td>Total</td>
+              <td>₹<?php echo $subtotal ?></td>
+            </tr>
+          </table>
+          <a href="../webproj/checkout/checkout.php" class="checkout btn">Proceed To Checkout</a>
+        </div>
+      <?php
+      } else {
+        print_r("No item found in cart");
+      }
+
+      ?>
     <?php
     } else {
       print_r("Please sign in to see your cart");

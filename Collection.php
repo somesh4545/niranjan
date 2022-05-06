@@ -41,7 +41,11 @@ $results_per_page = 1;
         <div class="product-layout">
 
           <?php
-
+          if (!isset($_GET['id'])) {
+            echo "<script>
+                    window.open('./index.php', '_self');
+                </script>";
+          }
           $category_id = $_GET['id'];
           if (!isset($_GET['page'])) {
             $page = 1;
@@ -74,9 +78,7 @@ $results_per_page = 1;
                         </div>
                       </button>
 
-                      <ul class='side-icons'>
-                        <span><i class='fas fa-share'></i></span>
-                      </ul>
+                    
                     </div>
                     <a href='productDetails.php?id=$product_id'>
                       <div class='bottom'>
@@ -90,6 +92,8 @@ $results_per_page = 1;
                 </div>
               ";
             }
+          } else {
+            echo "<p style='text-align: center; width: 100%;'>No product found in this category.</p>";
           }
 
           ?>

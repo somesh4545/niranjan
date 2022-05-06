@@ -137,9 +137,7 @@ if (isset($_SESSION['cust_id'])) {
                           <i class='fas fa-shopping-cart'></i>
                         </div>
                       </button>
-                      <ul class='side-icons'>
-                        <span><i class='fas fa-share'></i></span>
-                      </ul>
+                      
                     </div>
                     <a href='productDetails.php?id=$product_id'>
                       <div class='bottom'>
@@ -204,9 +202,6 @@ if (isset($_SESSION['cust_id'])) {
                     </div>
                   </button>
 
-                  <ul class='side-icons'>
-                    <span><i class='fas fa-share'></i></span>
-                  </ul>
                 </div>
                 <a href='productDetails.php?id=$product_id'>
                   <div class='bottom'>

@@ -38,20 +38,7 @@ $results_per_page = 4;
   <section class="section products">
     <div class="products-layout container">
       <div class="col-3-of-4">
-        <div class="sortclass">
-          <form action="" class="SortSubClass">
-            <div class="item">
-              <label for="sort-by">Sort By</label>
-              <select name="sort-by" id="sort-by">
-                <option value="title" selected="selected">Name</option>
-                <option value="number">Price</option>
-                <option value="search_api_relevance">Relevance</option>
-                <option value="created">Newness</option>
-              </select>
-            </div>
-            <a href="">Apply</a>
-          </form>
-        </div>
+
 
         <div class="product-layout">
 
@@ -86,9 +73,7 @@ $results_per_page = 4;
                   </div>
                 </button>
 
-                <ul class="side-icons">
-                  <span><i class="fas fa-share"></i></span>
-                </ul>
+
               </div>
               <a href="productDetails.php?id=<?= $id ?>">
                 <div class="bottom">

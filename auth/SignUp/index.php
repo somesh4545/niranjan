@@ -68,7 +68,7 @@ include '../../db.php';
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+                        <input type="checkbox" required> I accept the Terms of Use & Privacy Policy.
                         <span class="checkmark"></span>
                     </label>
                 </div>

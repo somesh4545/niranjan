@@ -36,6 +36,11 @@ session_start();
   <section class="section product-detail">
     <div class="details container">
       <?php
+      if (!isset($_GET['id'])) {
+        echo "<script>
+            window.open('./index.php', '_self');
+        </script>";
+      }
       $id = $_GET['id'];
       $query = mysqli_query($conn, "SELECT *, 
                             products.name AS product_name, 

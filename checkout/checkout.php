@@ -64,7 +64,7 @@ if (!isset($_SESSION['cust_id'])) {
     <div class="authwrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
         <div class="inner">
             <form id="form" onsubmit="online(event, <?= $cust_id ?>)">
-                <h3></h3>
+                <h3>Please provide following information</h3>
 
                 <div class="form-wrapper">
                     <label for="">Address :</label>
