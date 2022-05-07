@@ -8,7 +8,7 @@ if (isset($_POST['fname'])) {
     $password = $_POST['password'];
     $verification_status = $_POST['verification_status'];
 
-    $sql = "INSERT INTO customer (fname, lname, email, `password`, verification_status)
+    $sql = "INSERT INTO customer (`fname`, `lname`, `email`, `password`, `verification_status`)
 VALUES ('$fname', '$lname', '$email', '$password', 0)";
 
     if ($conn->query($sql) === TRUE) {
