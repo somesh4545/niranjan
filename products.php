@@ -5,7 +5,7 @@ $cust_id = 0;
 if (isset($_SESSION['cust_id'])) {
   $cust_id = $_SESSION['cust_id'];
 }
-$results_per_page = 4;
+$results_per_page = 8;
 ?>
 
 <!DOCTYPE html>

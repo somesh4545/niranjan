@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <nav class="nav">
   <div class="wrapper container">
     <div class="logo">
@@ -29,7 +25,7 @@ session_start();
           <label for="showdrop2" class="mobile-item">More <span><i class="fas fa-chevron-down"></i></span></label>
           <ul class="drop-menu2">
             <?php
-            $sql = "SELECT * FROM `categories`";
+            $sql = "SELECT * FROM `categories` where subcategory=0";
             $result = $conn->query($sql);
 
             while ($row = $result->fetch_assoc()) {

@@ -40,7 +40,7 @@ if (isset($_SESSION['cust_id'])) {
       <div class="swiper-container slider-1">
         <div class="swiper-wrapper">
           <?php
-          $sql = "SELECT * FROM banner";
+          $sql = "SELECT * FROM banner where category=0";
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
@@ -80,7 +80,7 @@ if (isset($_SESSION['cust_id'])) {
 
     <div class="promotion-layout container">
       <?php
-      $sql = "SELECT * FROM categories";
+      $sql = "SELECT * FROM categories where subCategory=0";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
@@ -90,11 +90,12 @@ if (isset($_SESSION['cust_id'])) {
           $category_name = $row['name'];
           echo "
             <div class='promotion-item'>
+              <a href='./Collection.php?id=$category_id'>
               <img src='$image_url' />
               <div class='promotion-content'>
                 <h3>$category_name</h3>
-                <a href='./Collection.php?id=$category_id'>SHOP NOW</a>
               </div>
+               </a>
             </div>
           ";
         }

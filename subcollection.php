@@ -1,11 +1,8 @@
 <?php
 include './db.php';
 session_start();
-$cust_id = 0;
-if (isset($_SESSION['cust_id'])) {
-    $cust_id = $_SESSION['cust_id'];
-}
-$results_per_page = 4;
+
+$results_per_page = 8;
 ?>
 
 <!DOCTYPE html>
@@ -39,25 +36,34 @@ $results_per_page = 4;
         <div class="products-layout container">
 
             <div class="col-3-of-4">
-
-
-                <div class="product-layout">
-                    <?php
-                    if (isset($_GET['search'])) {
-                        echo "<script>
+                <?php
+                if (!isset($_GET['id'])) {
+                    echo "<script>
                             window.open('./index.php', '_self');
                         </script>";
-                    }
-                    $search_term = $_GET['search'];
+                }
+                $category_id = $_GET['id'];
+                $result2 = mysqli_query($conn, "SELECT  `name` FROM categories where id=$category_id LIMIT 1");
+                while ($row = $result2->fetch_assoc()) {
+                    $category_name = $row['name'];
+                    echo "<h1 style='margin:20px'>$category_name</h1>";
+                }
+                ?>
 
+                <div class="product-layout">
+
+                    <?php
+                    $category_id = $_GET['id'];
                     if (!isset($_GET['page'])) {
                         $page = 1;
                     } else {
                         $page = $_GET['page'];
                     }
                     $page_first_result = ($page - 1) * $results_per_page;
-                    $sql = "SELECT * FROM `products` WHERE name LIKE '%$search_term%' LIMIT " . $page_first_result . "," . $results_per_page;
+                    $sql = "SELECT * FROM `products` WHERE category_id=$category_id LIMIT " . $page_first_result . "," . $results_per_page;
                     $result = $conn->query($sql);
+
+
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -66,53 +72,55 @@ $results_per_page = 4;
                             $price = $row['price'];
                             $discount_price = $row['discount_price'];
                             $image_url = $row['image_url'];
-                            // $cust_id = 1;
+                            $cust_id = 0;
+                            if (isset($_SESSION['cust_id'])) {
+                                $cust_id = $_SESSION['cust_id'];
+                            }
 
                             echo "
                                 <div class='product'>
                                     <div class='img-container'>
-                                        <img src='$image_url' alt='' />
-                                        <button onclick='performOnCart($cust_id, $product_id )' style='z-index: 100; background: none; outline: none; border: none;'>
-                                            <div class='addCart'>
-                                                <i class='fas fa-shopping-cart'></i>
-                                            </div>
-                                        </button>
+                                    <img src='$image_url' alt='' />
+                                    <button onclick='performOnCart($cust_id, $product_id)' style='z-index: 100; background: none; outline: none; border: none;'>
+                                        <div class='addCart'>
+                                        <i class='fas fa-shopping-cart'></i>
+                                        </div>
+                                    </button>
 
-                                        
+                                    
                                     </div>
                                     <a href='productDetails.php?id=$product_id'>
-
-                                        <div class='bottom'>
-                                            <a href='productDetails.php?id=$product_id'>$product_name</a>
-                                            <div class='price'>
-                                                <span>₹$discount_price</span>
-                                            </div>
+                                    <div class='bottom'>
+                                        <a href='productDetails.php?id=$product_id'>$product_name</a>
+                                        <div class='price'>
+                                        <span>₹$discount_price</span>
                                         </div>
+                                    </div>
                                     </a>
+                                </a>
                                 </div>
                             ";
                         }
                     } else {
-                        print_r("No result found");
+                        echo "<p style='text-align: center; width: 100%;'>No product found in this category.</p>";
                     }
 
                     ?>
-
                 </div>
 
                 <!-- PAGINATION -->
                 <ul class="pagination">
                     <?php
 
-                    $search_term = $_GET['search'];
-                    $sql = "SELECT * FROM `products` WHERE name LIKE '%$search_term%'";
+                    $id = $_GET['id'];
+                    $sql = "SELECT * FROM `products` WHERE category_id=$id";
                     $result = $conn->query($sql);
                     $num = mysqli_num_rows($result);
                     $number_of_page = ceil($num / $results_per_page);
                     for ($i = 1; $i <= $number_of_page; $i++) {
                         echo "
-                            <span><a href='./Search.php?search=$search_term&page=$i'>$i</a></span>
-                        ";
+                <span><a href='./Collection.php?id=$id&page=$i'>$i</a></span>
+            ";
                     }
                     ?>
                 </ul>
