@@ -128,7 +128,7 @@ nav .wrapper {
 @media screen and (max-width: 600px) {
   .nav .logo {
     font-size: 0px;
-    background: url("/webproj/images/logo.png");
+    background: url("/images/logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 30px;

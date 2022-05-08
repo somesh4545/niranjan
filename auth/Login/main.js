@@ -81,7 +81,7 @@ const createSessionAndSignIn = (email) => {
       console.log("signed in");
       sendToast("Sign in successful");
       setTimeout(function () {
-        window.location.assign("/webproj/index.php");
+        window.location.assign("/index.php");
       }, 3000);
     } else {
       sendToast("Something went wrong");

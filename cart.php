@@ -18,7 +18,7 @@ session_start();
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./css/snackbar.css" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="/webproj/images/logo.png" type="image/png" />
+  <link rel="shortcut icon" href="/images/logo.png" type="image/png" />
   <title>Niranjan</title>
 </head>
 
@@ -115,7 +115,7 @@ session_start();
               <td>₹<?php echo $subtotal ?></td>
             </tr>
           </table>
-          <a href="../webproj/checkout/checkout.php" class="checkout btn">Proceed To Checkout</a>
+          <a href="../checkout/checkout.php" class="checkout btn">Proceed To Checkout</a>
         </div>
       <?php
       } else {

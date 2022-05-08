@@ -1,13 +1,15 @@
 <nav class="nav">
   <div class="wrapper container">
-    <div class="logo">
-      Niranjan
-    </div>
+    <a href="/">
+      <div class="logo">
+        Niranjan
+      </div>
+    </a>
 
 
     <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
       <div class="search-container">
-        <form action="/webproj/Search.php">
+        <form action="/Search.php">
           <input type="text" placeholder="Search.." name="search" class="searchInput" autocomplete="off" />
           <button type="submit" class="searchBtn"><i class="fa fa-search"></i></button>
         </form>
@@ -18,7 +20,7 @@
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
         </div>
-        <li><a href="/webproj/index.php">Home</a></li>
+        <li><a href="/index.php">Home</a></li>
         <li>
           <a href="" class="desktop-item">Categories <span><i class="fas fa-chevron-down"></i></span></a>
           <input type="checkbox" id="showdrop2" />
@@ -32,7 +34,7 @@
               $id = $row['id'];
               $name = $row['name'];
               echo "
-                <li><a href='/webproj/Collection.php?id=$id'>$name</a></li>
+                <li><a href='/Collection.php?id=$id'>$name</a></li>
               ";
             }
             ?>
@@ -84,19 +86,19 @@
             </div>
           </div>
         </li> -->
-        <li><a href="/webproj/products.php">Products</a></li>
+        <li><a href="/products.php">Products</a></li>
 
         <?php
         if (!isset($_SESSION['cust_id'])) {
           echo '
-            <li><a href="/webproj/auth/Login">Login</a></li>
-            <li><a href="/webproj/auth/SignUp/">Signup</a></li>
-            <li><a href="/webproj/orders.php">Orders</a></li>
+            <li><a href="/auth/Login">Login</a></li>
+            <li><a href="/auth/SignUp/">Signup</a></li>
+            <li><a href="/orders.php">Orders</a></li>
           ';
         } else {
           echo '
-            <li><a href="/webproj/orders.php">Orders</a></li>
-            <li><a href="/webproj/functions.php?logout=true">Logout</a></li>
+            <li><a href="/orders.php">Orders</a></li>
+            <li><a href="/functions.php?logout=true">Logout</a></li>
           ';
         }
         ?>
@@ -110,14 +112,14 @@
             <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
             <li><a href="">Faq</a></li>
-            <li><a href="/webproj/orders.php">Orders</a></li>
+            <li><a href="/orders.php">Orders</a></li>
           </ul>
         </li> -->
         <!-- icons -->
         <li class="icons">
-          <a href="/webproj/cart.php">
+          <a href="/cart.php">
             <span>
-              <img src="/webproj/images/shoppingBag.svg" alt="" />
+              <img src="/images/shoppingBag.svg" alt="" />
               <!-- <small class="count d-flex">0</small> -->
             </span>
           </a>

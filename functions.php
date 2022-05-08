@@ -93,5 +93,5 @@ if (isset($_GET['logout'])) {
     session_start();
     unset($_SESSION['cust_id']);
     session_destroy();
-    echo '<script>window.open("/webproj/index.php", "_self")</script>';
+    echo '<script>window.open("/index.php", "_self")</script>';
 }

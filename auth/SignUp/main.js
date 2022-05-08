@@ -79,7 +79,7 @@ const storeData = (firstName, lastName, email, password) => {
     console.log(this.responseText);
     if (this.responseText == "true") {
       setTimeout(() => {
-        window.location.assign("/webproj/auth/Login");
+        window.location.assign("/auth/Login");
       }, 3000);
     } else {
       sendToast("Something went wrong");

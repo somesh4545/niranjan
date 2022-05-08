@@ -8,7 +8,7 @@ include '../../db.php';
 <head>
     <meta charset="utf-8">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/webproj/images/logo.png" type="image/png" />
+    <link rel="shortcut icon" href="/images/logo.png" type="image/png" />
     <title>Niranjan</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

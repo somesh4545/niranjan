@@ -66,7 +66,7 @@ if ($isValidChecksum == "TRUE") {
 											VALUES ('$ORDERID', '$TXNID','$GATEWAYNAME', '$BANKNAME', '$PAYMENTMODE', '$TXNDATE')");
 			echo "
 				<script>
-				window.open('/webproj/checkout/success.php', '_self');
+				window.open('/checkout/success.php', '_self');
 				</script>";
 			// echo "
 			// 		<script>
@@ -80,7 +80,7 @@ if ($isValidChecksum == "TRUE") {
 		// 	// echo "<b>Transaction status is failure</b>" . "<br/>";
 		// 	// echo "
 		// 	// <script>
-		// 	// window.open('/webproj/checkout/error.php', '_self');
+		// 	// window.open('/checkout/error.php', '_self');
 		// 	// </script>";
 
 		// }
@@ -95,7 +95,7 @@ if ($isValidChecksum == "TRUE") {
 		//Process transaction as suspicious.
 		echo "
 			<script>
-			window.open('/webproj/checkout/error.php', '_self');
+			window.open('/checkout/error.php', '_self');
 			</script>";
 	}
 }

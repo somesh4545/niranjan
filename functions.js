@@ -50,7 +50,7 @@ function cod(cust_id, address, number) {
   console.log(data);
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/webproj/functions.php", true);
+  xhr.open("POST", "/functions.php", true);
   xhr.onload = function () {
     // do something to response
     console.log(this.responseText);

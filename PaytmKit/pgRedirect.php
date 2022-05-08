@@ -5,7 +5,7 @@ session_start();
 if (!isset($_GET['cust_id'])) {
 	echo "
 		<script>
-			window.open('/webproj/index.php', '_self');
+			window.open('/index.php', '_self');
 		</script>";
 }
 
@@ -53,7 +53,7 @@ $paramList["INDUSTRY_TYPE_ID"] = $INDUSTRY_TYPE_ID;
 $paramList["CHANNEL_ID"] = $CHANNEL_ID;
 $paramList["TXN_AMOUNT"] = $TXN_AMOUNT;
 $paramList["WEBSITE"] = PAYTM_MERCHANT_WEBSITE;
-$paramList["CALLBACK_URL"] = "http://localhost:80/webproj/PaytmKit/pgResponse.php";
+$paramList["CALLBACK_URL"] = "http://localhost:80/PaytmKit/pgResponse.php";
 
 /*
 $paramList["CALLBACK_URL"] = "http://localhost/PaytmKit/pgResponse.php";

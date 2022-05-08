@@ -22,7 +22,7 @@ $results_per_page = 8;
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./css/snackbar.css" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="/webproj/images/logo.png" type="image/png" />
+  <link rel="shortcut icon" href="/images/logo.png" type="image/png" />
   <title>Niranjan</title>
 </head>
 
