@@ -89,24 +89,27 @@ $sub_category_arr = array();
 
   <!-- Promotion -->
 
-  <section class=" section promotion">
-    <div class="title">
-      <h2>Sub Categories</h2>
-      <!-- <span>Select from the premium product and save plenty money</span> -->
-    </div>
 
-    <div class="promotion-layout container">
-      <?php
-      if (!isset($_GET['id'])) {
-        echo "<script>
+  <?php
+  if (!isset($_GET['id'])) {
+    echo "<script>
                   window.open('./index.php', '_self');
               </script>";
-      }
-      $id = $_GET['id'];
-      $sql = "SELECT * FROM categories where subCategory=$id";
-      $result = $conn->query($sql);
+  }
+  $id = $_GET['id'];
+  $sql = "SELECT * FROM categories where subCategory=$id";
+  $result = $conn->query($sql);
 
-      if ($result->num_rows > 0) {
+  if ($result->num_rows > 0) {
+  ?>
+    <section class=" section promotion">
+      <div class="title">
+        <h2>Sub Categories</h2>
+        <!-- <span>Select from the premium product and save plenty money</span> -->
+      </div>
+
+      <div class="promotion-layout container">
+        <?php
         while ($row = $result->fetch_assoc()) {
           $category_id = $row['id'];
           array_push($sub_category_arr, $category_id);
@@ -123,11 +126,14 @@ $sub_category_arr = array();
             </div>
           ";
         }
-      }
-      ?>
+        ?>
 
-    </div>
-  </section>
+      </div>
+    </section>
+  <?php
+
+  }
+  ?>
 
   <!-- Products -->
   <section class="section products">
@@ -140,6 +146,8 @@ $sub_category_arr = array();
 
       <?php
       $total = 0;
+      $id = $_GET['id'];
+      array_push($sub_category_arr, $id);
       foreach ($sub_category_arr as $sub_category) {
 
         $sql = "SELECT * FROM `products` WHERE quantity>0 and category_id=$sub_category ORDER BY date DESC LIMIT 8";
